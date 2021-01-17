@@ -36,6 +36,7 @@
       "name": "Raiyaan Rahman",
       "age": 31,
       "married": true,
+      "status": "not_active",
       "average": 0,
       "id": 5
     }
@@ -103,6 +104,14 @@
       "author": 1,
       "picture": 2,
       "id": 9
+    },
+    {
+      "title": "Hello World",
+      "content": "Dummy text",
+      "status": "draft",
+      "author": 1,
+      "picture": 1,
+      "id": 10
     }
   ],
   "pictures": [

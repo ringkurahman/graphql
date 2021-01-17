@@ -9,6 +9,7 @@ export const Mutation = {
             name: args.data.name,
             age: args.data.age,
             married: args.data.married,
+            status: args.data.status,
             average: 0
         })
         return response.data
@@ -26,6 +27,9 @@ export const Mutation = {
         }
         if (args.data.average !== undefined) {
             data.average = args.data.average
+        }
+        if (args.data.status !== undefined) {
+            data.status = args.data.status
         }
 
         const response = await axios.patch(`${db}/users/${args.id}`, data)
@@ -45,8 +49,9 @@ export const Mutation = {
         // Get token from user id (token = userId)
         // Go to store picture === get id of the picture
         const response = await axios.post(`${db}/posts`, {
-            title: args.title,
-            content: args.content,
+            title: args.data.title,
+            content: args.data.content,
+            status: args.data.status,
             author: 1,  // Instead userId
             picture: 1  // Instead pictureId
         })
