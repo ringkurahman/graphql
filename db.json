@@ -31,6 +31,13 @@
       "married": true,
       "average": 2.5,
       "status": "guest"
+    },
+    {
+      "name": "Raiyaan",
+      "age": 31,
+      "married": true,
+      "average": 0,
+      "id": 5
     }
   ],
   "posts": [
@@ -96,6 +103,13 @@
       "author": 1,
       "picture": 2,
       "id": 9
+    },
+    {
+      "title": "Hello World",
+      "content": "This is dummy text",
+      "author": 1,
+      "picture": 1,
+      "id": 10
     }
   ],
   "pictures": [

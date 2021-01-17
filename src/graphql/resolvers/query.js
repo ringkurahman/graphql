@@ -28,3 +28,4 @@ export const Query = {
         return response.data
     }
 }
+
