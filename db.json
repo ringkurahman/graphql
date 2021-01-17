@@ -31,6 +31,13 @@
       "married": true,
       "average": 2.5,
       "status": "guest"
+    },
+    {
+      "name": "Raiyaan Rahman",
+      "age": 31,
+      "married": true,
+      "average": 0,
+      "id": 5
     }
   ],
   "posts": [

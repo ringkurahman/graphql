@@ -1,16 +1,19 @@
+
+
+type Mutation {
+  createAgent( name: String!, age: Int, married: Boolean ): User!
+  updateAgent(id: ID!, name: String, age: Int, married: Boolean, average: Float): User!
+  deleteAgent(id: ID!): Boolean!
+  createPost(title: String!, content: String!): Post!
+  deletePost(id: ID!): Boolean!
+}
+
 type Query {
   agent(id: ID!): User!
   agents(name: String, age: Int): [User!]!
   posts: [Post!]!
   post(id: ID!): Post!
   pictures: [Picture!]!
-}
-
-type Mutation {
-  createAgent( name: String!, age: Int, married: Boolean ): User!
-  deleteAgent(id: ID!): Boolean!
-  createPost(title: String!, content: String!): Post!
-  deletePost(id: ID!): Boolean!
 }
 
 type Picture {
