@@ -7,6 +7,8 @@ const server = new GraphQLServer({
         type Query {
             agent(id:ID!): User!
             agents: [User!]!
+            cars: [String]
+            msg(values:[String!]!):String
         }
         type User {
             id: ID!
@@ -25,6 +27,15 @@ const server = new GraphQLServer({
             agents: async () => {
                 const response = await axios.get('http://localhost:3000/users')
                 return response.data
+            },
+            cars: async () => {
+                return ['Ford', 'Mazda', 'Toyota', 'BMW']
+            },
+            msg: async (parent, args, context, info) => {
+                if (args.values.length === 0) {
+                    return `Sorry no values`
+                }
+                return `Hello ${args.values[0]} ${args.values[1]}`
             }
         }
     }
