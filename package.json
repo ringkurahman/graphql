@@ -11,6 +11,7 @@
   "author": "Ringku Rahman",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
