@@ -6,26 +6,26 @@ const db = 'http://localhost:3000'
 export const Mutation = {
     createAgent: async (parent, args, context, info) => {
         const response = await axios.post(`${db}/users`, {
-            name: args.name,
-            age: args.age,
-            married: args.married,
+            name: args.data.name,
+            age: args.data.age,
+            married: args.data.married,
             average: 0
         })
         return response.data
     },
     updateAgent: async (parent, args, context, info) => {
         let data = {}
-        if (args.name !== undefined) {
-            data.name = args.name
+        if (args.data.name !== undefined) {
+            data.name = args.data.name
         }
-        if (args.age !== undefined) {
-            data.age = args.age
+        if (args.data.age !== undefined) {
+            data.age = args.data.age
         }
-        if (args.married !== undefined) {
-            data.married = args.married
+        if (args.data.married !== undefined) {
+            data.married = args.data.married
         }
-        if (args.average !== undefined) {
-            data.average = args.average
+        if (args.data.average !== undefined) {
+            data.average = args.data.average
         }
 
         const response = await axios.patch(`${db}/users/${args.id}`, data)
