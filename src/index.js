@@ -9,8 +9,7 @@ const server = new GraphQLServer({
         type Query {
             agent(id:ID!): User!
             agents(name:String, age:Int): [User!]!
-            cars: [String]
-            msg(values:[String!]!):String
+            posts: [Post!]!
         }
         type User {
             id: ID!
@@ -18,6 +17,13 @@ const server = new GraphQLServer({
             age: Int
             married: Boolean
             average: Float
+        }
+        type Post {
+            id: ID!
+            title: String!
+            content: String
+            author: User!
+
         }
     `,
     resolvers: {
@@ -34,14 +40,15 @@ const server = new GraphQLServer({
                 const response = await axios.get(`${db}/users?${name}&${age}`)
                 return response.data
             },
-            cars: async () => {
-                return ['Ford', 'Mazda', 'Toyota', 'BMW']
-            },
-            msg: async (parent, args, context, info) => {
-                if (args.values.length === 0) {
-                    return `Sorry no values`
-                }
-                return `Hello ${args.values[0]} ${args.values[1]}`
+            posts: async (parent, args, context, info) => {
+                const response = await axios.get(`${db}/posts`)
+                return response.data
+            }
+        },
+        Post: {
+            author: async (parent, args, context, info) => {
+                const response = await axios.get(`${db}/users/${parent.author}`)
+                return response.data
             }
         }
     }
