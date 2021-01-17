@@ -11,6 +11,13 @@ const server = new GraphQLServer({
             agents(name:String, age:Int): [User!]!
             posts: [Post!]!
             post(id:ID!): Post!
+            pictures: [Picture!]!
+        }
+        type Picture {
+            id: ID!
+            path: String!
+            author: User!
+            post: Post!
         }
         type User {
             id: ID!
@@ -49,6 +56,10 @@ const server = new GraphQLServer({
             post: async (parent, args, context, info) => {
                 const response = await axios.get(`${db}/posts/${args.id}`)
                 return response.data
+            },
+            pictures: async (parent, args, context, info) => {
+                const response = await axios.get(`${db}/pictures`)
+                return response.data
             }
         },
         Post: {
@@ -60,6 +71,16 @@ const server = new GraphQLServer({
         User: {
             posts: async (parent, args, context, info) => {
                 const response = await axios.get(`${db}/posts?author=${parent.id}`)
+                return response.data
+            }
+        },
+        Picture: {
+            author: async (parent, args, context, info) => {
+                const response = await axios.get(`${db}/users/${parent.author}`)
+                return response.data
+            },
+            post: async (parent, args, context, info) => {
+                const response = await axios.get(`${db}/posts/${parent.post}`)
                 return response.data
             }
         }
