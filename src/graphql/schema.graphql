@@ -8,6 +8,7 @@ type Query {
 
 type Mutation {
   createAgent( name: String!, age: Int, married: Boolean ): User!
+  deleteAgent(id: ID!): Boolean!
   createPost(title: String!, content: String!): Post!
   deletePost(id: ID!): Boolean!
 }

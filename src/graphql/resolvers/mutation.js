@@ -13,6 +13,16 @@ export const Mutation = {
         })
         return response.data
     },
+    deleteAgent: async (parent, args, context, info) => {
+        const response = await axios.delete(`${db}/users/${args.id}`)
+        // Find all posts and delete them
+
+        // Find all pictures and delete them
+        if (Object.keys(response.data).length === 0) {
+            return true
+        }
+        return false
+    },
     createPost: async (parent, args, context, info) => {
         // Get token from user id (token = userId)
         // Go to store picture === get id of the picture
