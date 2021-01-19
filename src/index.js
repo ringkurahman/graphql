@@ -4,6 +4,7 @@ import { Post } from './graphql/resolvers/post'
 import { User } from './graphql/resolvers/user'  
 import { Picture } from './graphql/resolvers/picture' 
 import { Mutation } from './graphql/resolvers/mutation'
+import { AnimalUnion } from './graphql/resolvers/query'
 
 
 
@@ -15,11 +16,12 @@ const server = new GraphQLServer({
         Mutation,
         Post,
         User,
-        Picture
+        Picture,
+        AnimalUnion
     }
 })
 
 
 server.start(() => {
-    console.log('Woo Woo Woo')
+    console.log(`Let's play with GraphQL playground`)
 })
